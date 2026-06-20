@@ -7,8 +7,8 @@ from enum import Enum
 st.set_page_config(
     page_title="Student Leave Recommendation",
     page_icon="📚",
-    layout="centered",
-    initial_sidebar_state="auto"
+    layout="wide",
+    initial_sidebar_state="expanded"
 )
 
 # Custom CSS
@@ -150,7 +150,7 @@ with col1:
     
     student_id = st.text_input("Student ID", placeholder="e.g., STU001")
     student_name = st.text_input("Student Name", placeholder="Enter full name")
-    semester = st.selectbox("Semester", ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th"],placeholder="Select current semester")
+    semester = st.selectbox("Semester", ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th"])
     department = st.text_input("Department", placeholder="e.g., Computer Science")
 
 with col2:
@@ -158,8 +158,7 @@ with col2:
     
     attendance = st.selectbox(
         "Current Attendance",
-        [enum.value for enum in AttendanceLevel],
-        placeholder="Select attendance level"
+        [enum.value for enum in AttendanceLevel]
     )
     
     leaves_taken = st.number_input(
@@ -167,7 +166,6 @@ with col2:
         min_value=0,
         max_value=50,
         value=5
-        placeholder="Enter number of leaves taken so far"
     )
     
     leave_balance = st.number_input(
@@ -175,7 +173,6 @@ with col2:
         min_value=0,
         max_value=60,
         value=20
-        placeholder="Enter remaining leave balance"
     )
 
 st.markdown("---")
@@ -188,7 +185,6 @@ with col3:
     leave_type = st.selectbox(
         "Type of Leave",
         [enum.value for enum in LeaveType]
-        placeholder="Select leave type"
     )
     
     days_requested = st.number_input(
@@ -196,17 +192,15 @@ with col3:
         min_value=1,
         max_value=30,
         value=3
-        placeholder="Enter number of days for leave request"
     )
     
     leave_from = st.date_input("Leave From Date")
-    placeholder="Select start date of leave"
 
 with col4:
     st.subheader("📌 Additional Information")
     
     leave_to = st.date_input("Leave To Date")
-    placeholder="Select end date of leave"
+    
     exam_period = st.checkbox("Leave during exam period?")
     
     reason = st.text_area(
